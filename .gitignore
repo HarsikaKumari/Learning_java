@@ -1,5 +1,2 @@
-frmCourseSyllabusIPDownloadjavaLab.pdf
-main.java
-Practical Evaluation3.docx
-Java 4th evaluation.docx
-Lab Evaluation java4.pdf
+*.pdf
+*.docx

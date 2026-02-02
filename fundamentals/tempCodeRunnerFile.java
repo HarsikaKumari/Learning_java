@@ -1,1 +1,0 @@
-tln("not Palindrome");
