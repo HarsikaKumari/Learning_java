@@ -77,6 +77,12 @@ public class array {
         for (int i : twoSum(new int[]{3, 3}, 6)) {
             System.out.print(i + " ");
         }
+
+        int deliciousness[] = {1,3,5,7,9};
+        System.out.println("\nNumber of good meal pairs: " + countPairs(deliciousness));
+
+
+        System.out.println("Median is: " + findMedianSortedArrays(new int[]{1,3}, new int[]{2, 4}));
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -93,6 +99,20 @@ public class array {
         return result;
     }
 
+    public static int countPairs(int[] deliciousness) {
+        int count = 0;
+        System.out.println("Size of array "+deliciousness.length);
+        for(int i=0; i<deliciousness.length -1; i++){
+            for(int j=i+1; j<deliciousness.length; j++){
+                int sum = deliciousness[i] + deliciousness[j]; 
+                if(sum > 0 && (sum & (sum - 1)) == 0){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
     public static int findMax(int... nums) {
         int max = nums[0];
         for (int i = 0; i < nums.length; i++) {
@@ -101,5 +121,41 @@ public class array {
             }
         }
         return max;
+    }
+
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int size = nums1.length + nums2.length;
+        int arr[] = new int[size];
+        int i=0;
+        int j=0;
+        int k=0;
+
+        while(i<nums1.length && j<nums2.length){
+            if(nums1[i] <= nums2[j]){
+                arr[k++] =  nums1[i++];
+            }else{
+                arr[k++] = nums2[j++];
+            }
+        }
+
+    while (i < nums1.length)
+    {
+        arr[k++] = nums1[i++];
+    }
+
+    while (j < nums2.length)
+    {
+        arr[k++] = nums2[j++];
+    }
+
+    double med;
+    int mid = (0 + size) / 2;
+    if(size%2 == 0){    
+        med = (arr[mid] + arr[mid - 1]) / 2.00;
+    }else{
+        med = arr[mid];
+    }
+
+    return med;
     }
 }
